@@ -1,6 +1,6 @@
 // Va a ser el entry point de todas las rutas
 // BrowserRouter → Contexto (estado global) | → History
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory, Redirect } from 'react-router-dom';
 import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
 import Product from '../pages/Product/Product';
@@ -17,10 +17,12 @@ import { useState } from 'react';
 */
 const Routes = () => {
   const [search, setSearch] = useState('');
+  const history = useHistory();
 
   const handleSearch = (e) => {
       e.preventDefault()
       const [product] = e.target.elements;
+    //   history.push("/products") not working
       setSearch(product.value)
   }
   return (
@@ -39,6 +41,7 @@ const Routes = () => {
             <Products search={search} />
           </Route>
           <Route path="/products/:id" render={Product} />
+          < Redirect to="/" />
         </Switch>
       </Router>
     </>
