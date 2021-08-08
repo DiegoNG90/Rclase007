@@ -41,7 +41,8 @@ const Routes = () => {
             <Products search={search} />
           </Route>
           <Route path="/products/:id" render={Product} />
-          < Redirect to="/" />
+          <Route path="/error" component={() => <h1>Error: Page not found</h1>}/>
+          <Redirect to="/error" />
         </Switch>
       </Router>
     </>
