@@ -1,9 +1,9 @@
 // Va a ser el entry point de todas las rutas
 // BrowserRouter → Contexto (estado global) | → History
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Home from '../pages/Home/Home'
-import Products from '../pages/Products/Products'
-import Product from '../pages/Product/Product'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from '../pages/Home/Home';
+import Products from '../pages/Products/Products';
+import Product from '../pages/Product/Product';
 
 /*
 3 formas de renderizar rutas:
@@ -13,13 +13,15 @@ import Product from '../pages/Product/Product'
 3)
 */
 const Routes = () => {
-    return (
-      <Router>
-        <Route path="/" render={<Home />} />
-        <Route path="/products" render={<Products />} />
+  return (
+    <Router>
+      <Switch>
+        <Route path="/" exact render={<Home />} />
+        <Route path="/products" exact render={<Products />} />
         <Route path="/product/1" render={<Product />} />
-      </Router>
-    );
-}
+      </Switch>
+    </Router>
+  );
+};
 
 export default Routes;
