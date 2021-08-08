@@ -1,10 +1,11 @@
 // Va a ser el entry point de todas las rutas
 // BrowserRouter → Contexto (estado global) | → History
-import { BrowserRouter as Router, Route, Switch, useHistory, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+
 import Home from '../pages/Home/Home';
 import Products from '../pages/Products/Products';
 import Product from '../pages/Product/Product';
-import { useState } from 'react';
+import Navbar from '../components/Layout/Navbar'
 
 /*
 3 formas de renderizar rutas:
@@ -16,29 +17,15 @@ import { useState } from 'react';
 
 */
 const Routes = () => {
-  const [search, setSearch] = useState('');
-  const history = useHistory();
 
-  const handleSearch = (e) => {
-      e.preventDefault()
-      const [product] = e.target.elements;
-    //   history.push("/products") not working
-      setSearch(product.value)
-  }
   return (
     <>
-    <form onSubmit={handleSearch}>
-      <input
-        type="text"
-        placeholder="Buscar..."
-
-      />
-      </form>
       <Router>
+        <Navbar />
         <Switch>
           <Route path="/" exact render={Home} />
           <Route path="/products" exact>
-            <Products search={search} />
+            <Products search="custom state" />
           </Route>
           <Route path="/products/:id" render={Product} />
           <Route path="/error" component={() => <h1>Error: Page not found</h1>}/>
