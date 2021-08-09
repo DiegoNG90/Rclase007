@@ -27,7 +27,7 @@ const Routes = () => {
           <Route path="/products" exact>
             <Products search="custom state" />
           </Route>
-          <Route path="/products/:id" render={Product} />
+          <Route path="/products/:id" component={Product} />
           <Route path="/error" component={() => <h1>Error: Page not found</h1>}/>
           <Redirect to="/error" />
         </Switch>
