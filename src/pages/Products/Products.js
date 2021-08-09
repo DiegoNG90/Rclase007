@@ -4,9 +4,9 @@ const Products = () => {
     return (
         <>
             <h1>List of Products</h1>
-            <Link to="/products/1">Producto 1</Link>
+            <Link to="/products/1">Product 1</Link>
             < hr/>
-            <Link to="/products/2">Producto 2</Link>
+            <Link to="/products/2">Product 2</Link>
         </>
     );
 }
